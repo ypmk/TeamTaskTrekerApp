@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+build/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+# CUBA local deployment
+deploy/
+tomcat/
+temp/
+work/
+# Database (HSQL local)
+*.db
+*.log
+*.lck
+*.script
+*.properties
+*.data
+*.backup
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+# OS
+.DS_Store
+Thumbs.db
+# Logs
+*.log
+# Generated files
+modules/**/build/
+modules/**/out/
