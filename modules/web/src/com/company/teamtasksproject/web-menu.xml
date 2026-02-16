@@ -2,5 +2,6 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-teamtasksproject" insertBefore="administration" caption="mainMsg://menu_config.application-teamtasksproject">
         <item screen="teamtasksproject_Project.browse" caption="mainMsg://menu_config.teamtasksproject_Project.browse"/>
+        <item screen="teamtasksproject_Task.browse" caption="mainMsg://menu_config.teamtasksproject_Task.browse"/>
     </menu>
 </menu-config>
