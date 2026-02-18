@@ -17,14 +17,14 @@
             <column width="350px">
                 <textField id="titleField" property="title"/>
                 <textArea id="descriptionField" property="description" rows="5"/>
-                <pickerField id="projectField"
-                             property="project"
-                             required="true">
+                <lookupPickerField id="projectField"
+                                   property="project"
+                                   required="true">
                     <actions>
-                        <action id="lookup"/>
-                        <action id="clear"/>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear"  type="picker_clear"/>
                     </actions>
-                </pickerField>
+                </lookupPickerField>
 
                 <lookupField id="statusField" property="status"/>
                 <lookupField id="priorityField" property="priority"/>

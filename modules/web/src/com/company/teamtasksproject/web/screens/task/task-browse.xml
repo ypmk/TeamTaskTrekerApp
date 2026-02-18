@@ -7,7 +7,9 @@
     <data readOnly="true">
         <collection id="tasksDc"
                     class="com.company.teamtasksproject.entity.Task">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="project" view="_local"/>
+            </view>
             <loader id="tasksDl">
                 <query>
                     <![CDATA[select e from teamtasksproject_Task e]]>
