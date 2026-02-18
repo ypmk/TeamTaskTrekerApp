@@ -8,7 +8,9 @@
         <collection id="tasksDc"
                     class="com.company.teamtasksproject.entity.Task">
             <view extends="_local">
-                <property name="project" view="_local"/>
+                <property name="project" view="_minimal"/>
+                <property name="author" view="_minimal"/>
+                <property name="assignee" view="_minimal"/>
             </view>
             <loader id="tasksDl">
                 <query>
@@ -40,6 +42,7 @@
                 <column id="status"/>
                 <column id="priority"/>
                 <column id="dueDate"/>
+                <column id="assignee"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

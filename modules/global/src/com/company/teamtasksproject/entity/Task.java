@@ -48,11 +48,14 @@ public class Task extends StandardEntity {
     @Column(name = "DUE_DATE")
     private Date dueDate;
 
-
     @OrderBy("createTs")
     @Composition
     @OneToMany(mappedBy = "task")
     private List<TaskComment> comments;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "AUTHOR_ID")
+    private User author;
 
 
     @JoinTable(name = "TEAMTASKSPROJECT_TASK_TEAMTASKSPROJECT_TAG_LINK",
@@ -88,4 +91,8 @@ public class Task extends StandardEntity {
 
     public Set<Tag> getTags() { return tags; }
     public void setTags(Set<Tag> tags) { this.tags = tags; }
+
+    public User getAuthor() {return author;}
+    public void setAuthor(User author) {this.author=author;}
+
 }

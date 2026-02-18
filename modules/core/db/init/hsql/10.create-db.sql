@@ -67,6 +67,7 @@ create table TEAMTASKSPROJECT_TASK (
     PRIORITY varchar(50) not null,
     ASSIGNEE_ID varchar(36),
     DUE_DATE date,
+    AUTHOR_ID varchar(36),
     --
     primary key (ID)
 )^

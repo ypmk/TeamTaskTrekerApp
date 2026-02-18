@@ -6,7 +6,11 @@
     <data>
         <instance id="taskDc"
                   class="com.company.teamtasksproject.entity.Task">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="project" view="_minimal"/>
+                <property name="assignee" view="_minimal"/>
+                <property name="author" view="_minimal"/>
+            </view>
             <loader/>
         </instance>
     </data>
@@ -25,10 +29,16 @@
                         <action id="clear"  type="picker_clear"/>
                     </actions>
                 </lookupPickerField>
-
                 <lookupField id="statusField" property="status"/>
                 <lookupField id="priorityField" property="priority"/>
                 <dateField id="dueDateField" property="dueDate"/>
+                <lookupPickerField id="assigneeField"
+                                   property="assignee">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear"  type="picker_clear"/>
+                    </actions>
+                </lookupPickerField>
             </column>
         </form>
         <hbox id="editActions" spacing="true">
