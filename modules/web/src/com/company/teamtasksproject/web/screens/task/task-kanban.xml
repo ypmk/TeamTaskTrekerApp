@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="Kanban"
+        focusComponent="newTasksTable"
+        messagesPack="com.company.teamtasksproject.web.screens.task">
+
+    <data>
+        <collection id="newTasksDc" class="com.company.teamtasksproject.entity.Task">
+            <view extends="_local">
+                <property name="project" view="_minimal"/>
+                <property name="assignee" view="_minimal"/>
+            </view>
+            <loader id="newTasksDl" >
+                <query><![CDATA[
+                    select e from teamtasksproject_Task e
+                    where e.status = :status
+                        and e.assignee = :assignee
+                    order by e.createTs desc
+                ]]></query>
+            </loader>
+        </collection>
+
+        <collection id="inProgressTasksDc" class="com.company.teamtasksproject.entity.Task">
+            <view extends="_local">
+                <property name="project" view="_minimal"/>
+                <property name="assignee" view="_minimal"/>
+            </view>
+            <loader id="inProgressTasksDl">
+                <query><![CDATA[
+                    select e from teamtasksproject_Task e
+                    where e.status = :status
+                        and e.assignee = :assignee
+                    order by e.createTs desc
+                ]]></query>
+            </loader>
+        </collection>
+
+        <collection id="reviewTasksDc" class="com.company.teamtasksproject.entity.Task">
+            <view extends="_local">
+                <property name="project" view="_minimal"/>
+                <property name="assignee" view="_minimal"/>
+            </view>
+            <loader id="readyForTestTasksDl">
+                <query><![CDATA[
+                    select e from teamtasksproject_Task e
+                    where e.status = :status
+                        and e.assignee = :assignee
+                    order by e.createTs desc
+                ]]></query>
+            </loader>
+        </collection>
+
+        <collection id="fixTasksDc" class="com.company.teamtasksproject.entity.Task">
+            <view extends="_local">
+                <property name="project" view="_minimal"/>
+                <property name="assignee" view="_minimal"/>
+            </view>
+            <loader id="reworkTasksDl">
+            <query><![CDATA[
+                    select e from teamtasksproject_Task e
+                    where e.status = :status
+                        and e.assignee = :assignee
+                    order by e.createTs desc
+                ]]></query>
+            </loader>
+        </collection>
+
+        <collection id="doneTasksDc" class="com.company.teamtasksproject.entity.Task">
+            <view extends="_local">
+                <property name="project" view="_minimal"/>
+                <property name="assignee" view="_minimal"/>
+            </view>
+            <loader id="doneTasksDl">
+                <query><![CDATA[
+                    select e from teamtasksproject_Task e
+                    where e.status = :status
+                        and e.assignee = :assignee
+                    order by e.createTs desc
+                ]]></query>
+            </loader>
+        </collection>
+    </data>
+
+    <layout expand="board" spacing="true" width="100%" height="100%">
+
+        <hbox spacing="true" width="100%">
+            <button id="refreshBtn" caption="Обновить"/>
+            <label value=" " width="100%"/>
+            <button id="createBtn" caption="Создать задачу"/>
+        </hbox>
+
+        <hbox id="board" spacing="true" width="100%" height="100%">
+
+            <vbox spacing="true" width="100%" height="100%" expand="newTasksTable">
+                <label value="Новые"/>
+                <groupTable id="newTasksTable"
+                            width="100%" height="100%"
+                            dataContainer="newTasksDc">
+                    <actions>
+                        <action id="view"/>
+                    </actions>
+                    <columns>
+                        <column id="title"/>
+                        <column id="dueDate"/>
+                        <column id="view" caption=""/>
+                    </columns>
+                </groupTable>
+            </vbox>
+
+            <vbox spacing="true" width="100%" height="100%" expand="inProgressTasksTable">
+                <label value="В работе"/>
+                <groupTable id="inProgressTasksTable"
+                            width="100%" height="100%"
+                            dataContainer="inProgressTasksDc">
+                    <actions>
+                        <action id="view"/>
+                    </actions>
+                    <columns>
+                        <column id="title"/>
+                        <column id="dueDate"/>
+                        <column id="view" caption=""/>
+                    </columns>
+                </groupTable>
+            </vbox>
+
+            <vbox spacing="true" width="100%" height="100%" expand="reviewTasksTable">
+                <label value="На проверке"/>
+                <groupTable id="reviewTasksTable"
+                            width="100%" height="100%"
+                            dataContainer="reviewTasksDc">
+                    <actions>
+                        <action id="view"/>
+                    </actions>
+                    <columns>
+                        <column id="title"/>
+                        <column id="dueDate"/>
+                        <column id="view" caption=""/>
+                    </columns>
+                </groupTable>
+            </vbox>
+
+            <vbox spacing="true" width="100%" height="100%" expand="fixTasksTable">
+                <label value="На исправлении"/>
+                <groupTable id="fixTasksTable"
+                            width="100%" height="100%"
+                            dataContainer="fixTasksDc">
+                    <actions>
+                        <action id="view"/>
+                    </actions>
+                    <columns>
+                        <column id="title"/>
+                        <column id="dueDate"/>
+                        <column id="view" caption=""/>
+                    </columns>
+                </groupTable>
+            </vbox>
+
+            <vbox spacing="true" width="100%" height="100%" expand="doneTasksTable">
+                <label value="Сделано"/>
+                <groupTable id="doneTasksTable"
+                            width="100%" height="100%"
+                            dataContainer="doneTasksDc">
+                    <actions>
+                        <action id="view"/>
+                    </actions>
+                    <columns>
+                        <column id="title"/>
+                        <column id="dueDate"/>
+                        <column id="view" caption=""/>
+                    </columns>
+                </groupTable>
+            </vbox>
+
+        </hbox>
+    </layout>
+</window>

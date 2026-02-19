@@ -18,7 +18,6 @@ import java.util.Set;
 public class Task extends StandardEntity {
     private static final long serialVersionUID = -2675192910345128190L;
 
-
     @NotNull
     @Column(name = "TITLE", nullable = false)
     private String title;
@@ -65,11 +64,21 @@ public class Task extends StandardEntity {
     @ManyToMany
     private Set<Tag> tags;
 
-    public TaskStatus getStatus() { return TaskStatus.fromId(status); }
-    public void setStatus(TaskStatus status) { this.status = status != null ? status.getId() : null; }
+    public TaskStatus getStatus() {
+        return status == null ? null : TaskStatus.fromId(status);
+    }
 
-    public Priority getPriority() { return Priority.fromId(priority); }
-    public void setPriority(Priority priority) { this.priority = priority != null ? priority.getId() : null; }
+    public void setStatus(TaskStatus status) {
+        this.status = status == null ? null : status.getId();
+    }
+
+    public Priority getPriority() {
+        return priority == null ? null : Priority.fromId(priority);
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority == null ? null : priority.getId();
+    }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }

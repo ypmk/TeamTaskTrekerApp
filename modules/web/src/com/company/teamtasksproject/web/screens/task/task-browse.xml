@@ -13,9 +13,11 @@
                 <property name="assignee" view="_minimal"/>
             </view>
             <loader id="tasksDl">
-                <query>
-                    <![CDATA[select e from teamtasksproject_Task e]]>
-                </query>
+                <query><![CDATA[
+                    select e from teamtasksproject_Task e
+                        where e.assignee = :assignee
+                    order by e.createTs desc
+                ]]></query>
             </loader>
         </collection>
     </data>
